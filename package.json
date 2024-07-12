@@ -5,6 +5,7 @@
   "main": "Driftout/server/server.js",
   "scripts": {
     "start": "node Driftout/server/server.js",
+    "run": "node Driftout/server/server.js",
     "dev": "nodemon Driftout/server/server.js"
   },
   "repository": {
