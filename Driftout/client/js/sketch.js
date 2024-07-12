@@ -104,8 +104,9 @@ class NewsPiece{
 }
 
 currentNews = [
-  new NewsPiece("Server Migration", "4/12/22", "Hey everyone!\nThe last month has left me with very little spare time to commit updates to Driftout, and after having this game listed on some IO game websites, it gained alot of traction. As a result, the hosting is becoming rather expensive. So over the next few days I will be migrating the hosting from Digital Ocean to a more cost-friendly alternative.\n Apologies for any performance issues caused by this as I am aiming for as effective connection possible for the money I am willing to spend. Thanks! :) ~ Brad")
-]
+  new NewsPiece("Development Continuation", "7/12/24", "Hello everyone!\nI'm excited to announce that I, Adam, will be continuing the development of Driftout. Unfortunately, Brad has been unable to dedicate time to the project due to his full-time job. My primary goals are to make the game online and live again, and to rework it using the Matter.js library (https://brm.io/matter-js/).\nI appreciate your support and patience as I make these improvements. Thank you! ~ Adam")
+];
+
 
 for(article in currentNews){
   newsContainer.innerHTML += "<div id='newsArticle'><h1>" + currentNews[article].title + "</h1><p>" + currentNews[article].date + "</p><h2>" + currentNews[article].content + "</h2></div>";
