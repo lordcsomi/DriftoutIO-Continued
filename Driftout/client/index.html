@@ -18,15 +18,12 @@
   </head>
   <body>
     <div id = "menuContainer">
-      <button id = "newsButton" onClick = "toggleNewsOn()" type = "button">
-        News
-      </button>
       <div id = "tipsContainer">
         Be the first to complete 20 laps!
       </div>
       <div id=footerContainer>
         <div id="sourceCodeNav">
-          <a href=https://github.com/Bradzie/DriftoutIO>
+          <a href=https://github.com/lordcsomi/DriftoutIO-Continued target="_blank">
             Source Code
           </a>
         </div>
@@ -35,28 +32,30 @@
         </button>
       </div>
       <div id= "versionContainer">
-        Alpha V0.7.91
+        Alpha V0.7.92
       </div>
-      <div id = "ioGameSpaceLink">
-        <a href="https://iogames.space">
-          More Games
-        </a>
-      </div>
-      <div id = "inspirationContainer">
-        Inspired by
-        <a href=http://driftin.io/>
-          Driftin.io
-        </a>
-      </div>
+      <!--
+        <div id = "ioGameSpaceLink">
+          <a href="https://iogames.space">
+            More Games
+          </a>
+        </div>
+      -->
       <div id = "authorContainer">
-        Game originally by
-        <p>
-          Brad Geary
+        Game originally by: Brad Geary 
+        <br>
+        Continued by: Csomós Ádám
+      </div>
+      <div class = "gameTitle">
+        <p>DRIFTOUT
+          <span class="io" style="color:#2596be">IO</span>
+          <br>
+          <span class="io" style="color:#2596be">CONTINUED</span>
         </p>
       </div>
-      <p class = "gameTitle">DRIFTOUT
-        <span style="color:#2596be">IO</span>
-      </p>
+      <button id = "newsButton" onClick = "toggleNewsOn()" type = "button">
+        News
+      </button>
       <div id=classDisplay>
         Racer
         <div id="classImageBlock">
@@ -64,7 +63,7 @@
       </div>
       <div id = "inputContainer">
         <button id = "changeClassButton" onClick = "changeClass()" type = "button">
-          Class 🗘
+          Class 🚗
         </button>
         <input id = "nameInput" placeholder = "Name" maxlength="14">
         <button id = "enterGameButton" onClick = "enterGame()" type = "button">

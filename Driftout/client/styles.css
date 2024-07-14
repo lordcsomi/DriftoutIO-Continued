@@ -100,7 +100,7 @@ a:hover{
   font-family: 'Kdam Thmor Pro';
 }
 
-#notificationContainer : hover{
+#notificationContainer:hover{
   cursor: default;
 }
 
@@ -626,7 +626,7 @@ a:hover{
 }
 
 .gameTitle {
-  top: -0.5em;
+  top: -0.9em;
   left: 50%;
   width: 100%;
   transform: translate(-50%);
@@ -641,9 +641,10 @@ a:hover{
 
 }
 
-.gameTitle span{
+.io {
   text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
 }
+
 
 /* FOR MOBILE DEVICES */
 
@@ -781,7 +782,7 @@ a:hover{
     border-top: solid white 4px;
   }
 
-  #upgradeItem : hover {
+  #upgradeItem:hover {
     background-color: rgba(30, 30, 30, 0.2);
   }
 

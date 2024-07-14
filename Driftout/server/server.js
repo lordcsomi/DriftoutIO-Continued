@@ -1,35 +1,28 @@
-var path = require("path");
-var http = require("http");
-var express = require("express");
-var socketIO = require("socket.io");
+const path = require("path");
+const http = require("http");
+const express = require("express");
+const socketIO = require("socket.io");
 
-// Needs replacement upon cloud hosting?
-var publicPath = path.join(__dirname, "../client")
-var port = process.env.PORT || 80;
-var host = process.env.HOST || '0.0.0.0';
-var app = express();
-var server = http.createServer(app);
-var io = socketIO(server);
+const publicPath = path.join(__dirname, "../client");
+const port = process.env.PORT || 80;
+const host = process.env.HOST || '0.0.0.0';
+const app = express();
+const server = http.createServer(app);
+const io = socketIO(server);
 app.use(express.static(publicPath));
 
 // ---------- GLOBALS ----------
-
-var rooms = [];
-var allTracks;
-var currentTrack;
-var currentConnections = [];
-var totalConnections = 0;
-var playerNames = [];
+let rooms = [];
+let currentConnections = [];
+let totalConnections = 0;
+let playerNames = [];
 
 // ---------- MODIFIERS ----------
-
-var debug = false;
-var grip = 0.99;
-var lapsToWin = 20;
-var maxRoomSize = 10;
-var invincibilityPeriod = 4000;
-
-// ---------- ---------- ----------
+const debug = false;
+const grip = 0.99;
+const lapsToWin = 20;
+const maxRoomSize = 10;
+const invincibilityPeriod = 4000; // in milliseconds
 
 server.listen(port, host);
 
@@ -40,9 +33,12 @@ io.on("connection", function(socket){
   totalConnections++;
   currentConnections.push(socket.id);
 
-  var player;
+  let player;
   socket.on("ready", (data) => {
       player = new Player(socket.id, data.name, 900, Math.floor((Math.random()-0.5)*200), data.car, data.dev);
+
+      // validate player name
+      player.name = player.name.replace(/[<>'"\\/]/g, ''); // Remove special characters to prevent xss
       if(player.name.length > 14){
         player.name = "";
       }
@@ -151,7 +147,10 @@ io.on("connection", function(socket){
   });
 
   socket.on("recieveMessage", (data) => {
+    if (data.message.length < 31){ // Enforce message length limit
+    data.message = data.message.replace(/[<>'"\\/]/g, ''); // Remove special characters to prevent xss
     rooms[data.roomIndex].messages.push(data.author + ": " + data.message);
+    }
   });
 
   socket.on("removePlayerServer", (data) => {
@@ -221,6 +220,7 @@ var Player = function(id, name, x, y, car, dev) {
   //Dev gets godmode indefinitely
   if(this.dev){
     this.god = [true, Date.now() + 60000*60];
+    this.upgradePoints = 100;
   }
 
   for (var x in this.car.upgrades){

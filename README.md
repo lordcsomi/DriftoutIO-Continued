@@ -5,7 +5,7 @@ Hi, I'm csomi, and I'm continuing the development of DriftoutIO. My primary goal
 ## Current Goals
 
 1. Make the game online and live again.
-2. Rework the game using the Matter.js library (https://brm.io/matter-js/).
+2. Rework the game using the Matter.js or kinetics.ts or Box2D
  
 ## Battle other racers to be the first to complete 20 laps! 🚗
 
@@ -49,7 +49,9 @@ We are currently at: V0.7.9
 - V0.7.6 (Bug fix) Classes no longer display over metrics screen, aligned ability and boost containers
 - V0.7.7 Mobile GUI changes, Google adsense
 - V0.7.8 Major upgrade changes (HP regen nerfs). Collision algorithm changed and conenction timeouts
-- (Here) V0.7.9 New class (Swapper), Room size 8 -> 10, Collision changes, GUI changes
+- V0.7.9 New class (Swapper), Room size 8 -> 10, Collision changes, GUI changes
+
+- (Here) V0.7.9.2 Continue the development, XSS protection, some GUI changes, update dependencies 
 
 - v0.8 Mobile integration
 
@@ -60,7 +62,7 @@ We are currently at: V0.7.9
 
 ## Bugs:
 
-There are currently multiple bugs on list to be corrected one by one - I will update this list as often as I can so it stays relevant. As of 11/9/22 I advertised this game on the IOgames sub-reddit and wow, there was alot of bugs. Was really fun playing with everyone :)
+There are currently multiple bugs on list to be corrected one by one - I will update this list as often as I can so it stays relevant.
 
 1. -- Major -- Sometimes the camera will not properly follow the player, and tracks are out of sync with collisions. This is top of the list right now :)
 2. Sometimes, but rarely, lap checkpoints can be completely missed (likely due to the size of checkpoint triggers)

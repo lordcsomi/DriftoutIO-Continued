@@ -2,7 +2,7 @@
 
 // Bulk HTML Access
 
-var mainCanvas = document.getElementById("mainCanvas"),
+let mainCanvas = document.getElementById("mainCanvas"),
   gameTitle = document.getElementById("gameTitle"),
   enterGameButton = document.getElementById('enterGameButton'),
   changeClassButton = document.getElementById('changeClassButton')
@@ -44,21 +44,21 @@ var mainCanvas = document.getElementById("mainCanvas"),
 
 // Global Vars
 
-var dev = false;
-var socket;
-var playing = false;
-var windowDisplay = false;
-var allCars;
-var allTracks;
-var currentTrack;
-var allPlayers = [];
-var notifications = [];
-var messages = [];
-var nextNotification = 0;
-var currentEntities = [];
-var clientPlayerAngle = 0;
-var classIndex = 0;
-var classEntries = [
+let dev = false;
+let socket;
+let playing = false;
+let windowDisplay = false;
+let allCars;
+let allTracks;
+let currentTrack;
+let allPlayers = [];
+let notifications = [];
+let messages = [];
+let nextNotification = 0;
+let currentEntities = [];
+let clientPlayerAngle = 0;
+let classIndex = 0;
+const classEntries = [
   "Racer<br>■■□ Speed<br>■■□ Handling<br>■■□ Durability",
   "Sprinter<br>■■■ Speed<br>■□□ Handling<br>■□□ Durability<br>Ability: Steady",
   "Tank<br>■□□ Speed<br>■■■ Handling<br>■■■ Durability",
@@ -68,12 +68,12 @@ var classEntries = [
   "Spike<br>■□□ Speed<br>■■■ Handling<br>■■□ Durability",
   "Swapper<br>■□□ Speed<br>■■■ Handling<br>■■■ Durability<br>Ability: Switch"
 ]
-var forceDisconnect = 0;
-var errors = [
+let forceDisconnect = 0;
+const errors = [
   "Failed to reach server for 3 seconds. Most likely an update, refresh in a minute. :D",
   "This game only functions properly in portrait mode, please rotate your device and refresh :)"
 ]
-var tips = [
+const tips = [
   "Boosting from a lower speed increases boost power",
   "Crash other players to earn upgrade points",
   "Press 'q' to open a detailed leaderboard",
@@ -83,17 +83,16 @@ var tips = [
   "Boosts and health refill upon completion of a lap"
 ]
 
-var tipsCounter = Date.now();
-var tipsIndex = Math.floor(Math.random() * tips.length);
-var classDisplayAngle = 0;
-var numPressed = null;
-var totalConnections=0;
-var playerNames = [];
-var currentRoom = null;
-var myName;
-var isMobile;
-var mobileCoords;
-var timeOutTick = 0;
+let tipsCounter = Date.now();
+let tipsIndex = Math.floor(Math.random() * tips.length);
+let classDisplayAngle = 0;
+let numPressed = null;
+let totalConnections=0;
+let playerNames = [];
+let currentRoom = null;
+let myName;
+let mobileCoords;
+let timeOutTick = 0;
 
 class NewsPiece{
   constructor(title, date, content){
@@ -104,7 +103,7 @@ class NewsPiece{
 }
 
 currentNews = [
-  new NewsPiece("Development Continuation", "7/12/24", "Hello everyone!\nI'm excited to announce that I, Adam, will be continuing the development of Driftout. Unfortunately, Brad has been unable to dedicate time to the project due to his full-time job. My primary goals are to make the game online and live again, and to rework it using the Matter.js library (https://brm.io/matter-js/).\nI appreciate your support and patience as I make these improvements. Thank you! ~ Adam")
+  new NewsPiece("Development Continuation", "7/12/24", "Hello everyone!\nI'm excited to announce that I will be continuing the development of Driftout. Unfortunately, Brad has been unable to dedicate time to the project due to his full-time job. My primary goals are to make the game online and live again, and to rework it using the Matter.js.\nI appreciate your support and patience as I make these improvements.\nThank you! ~ Ádám")
 ];
 
 
@@ -290,7 +289,7 @@ function setup(){
 }
 
 // Check if device is mobile (p5js setup function cannot call global functions on startup)
-var isMobile = mobileCheck()? true : false;
+let isMobile = mobileCheck()? true : false;
 if(isMobile){
   var mouseWithinJoystickRadius = false;
   abilityHint.innerHTML = "";
@@ -398,7 +397,7 @@ function draw() {
         }
       }
       else{
-        carChoice.drawCar(windowWidth/2 - 70, windowHeight - 175, classDisplayAngle);
+        carChoice.drawCar(windowWidth/2 - 70, windowHeight - 165, classDisplayAngle)
       }
       classDisplayAngle+=0.04;
       if(Date.now() > tipsCounter){
@@ -527,7 +526,7 @@ function enterGame(){
     carChoice = allCars.Swapper;
   }
 
-  socket.emit("ready", {name: nameInput.value, car: carChoice, dev: dev});
+  socket.emit("ready", {name: nameInput.value, car: carChoice, dev: dev}); // maybe url encode the name to prevent XSS
 
   notifications = [];
   enterGameButton.setAttribute('onClick', '');
